@@ -9,14 +9,18 @@
     <link rel="stylesheet" href='golg.css'>
 </head>
 <body>
-
+    <div fxFlex class="centerAlign">
     <div id = 'world'>
     </div>
 
-    <div>
+    <div class="centerAlign" style="text-align: center;">
 
-        <input type = 'button' value = 'UPDATE' onclick='updateAll()'>
+        <input type = 'button' value = 'Interval' onclick='updateAll()'>
+
+        <Input type='button' id='btnstartstop' value='Start GOLG' onclick='startStopGolg();'/>
+        <Input type='button' id='btnreset' value='Reset GOLG' onclick='resetWorld();'/>
     
+    </div>
     </div>
 <!-- Here's where the magic happens -->
     <script src='golg.js'></script>

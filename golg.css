@@ -1,6 +1,14 @@
 #world {
     padding-bottom: 10px;
 }
+
+.centerAlign{
+  margin: auto;
+  width: 70%;
+  border: 3px solid rgb(20, 20, 119);
+  padding: 10px;
+}
+
 table {
     background-color: rgb(233, 221, 221);
 }

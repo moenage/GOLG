@@ -1,8 +1,12 @@
-const rows = 50;
-const cols = 50;
+const rows = 30;
+const cols = 40;
 
 let now =[rows];
 let next =[rows];
+
+let started=false;// Set to true when use clicks start
+let timer;//To control evolutions
+let evolutionSpeed=500;// One second between generations
 
 //OnClick function
 function cellClick() {
@@ -145,6 +149,7 @@ function updateNow() {
     console.log(5);
  
 }
+
 function updateWorld() {
     console.log(1);
     let cell='';
@@ -161,11 +166,38 @@ function updateWorld() {
     console.log(2);
 }
 
+function checkAll(){
+
+}
+
 function updateAll(){
     console.log(3);
     createNext();//Apply the rules
     updateNow();//Set Current values from new generation
     updateWorld();//Update the world view
+
+    if (started) {
+        timer = setTimeout(updateAll, evolutionSpeed);
+    }
+}
+
+function startStopGolg(){
+    let startstop=document.querySelector('#btnstartstop');
+   
+    if (!started) {
+       started = true;
+       startstop.value='Stop GOLG';
+       updateAll();
+     
+     } else {
+        started = false;
+        startstop.value='Start GOLG';
+        clearTimeout(timer); 
+    }
+}
+
+function resetWorld() {
+    location.reload();
 }
 
 function createWorld(){
