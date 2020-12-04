@@ -38,6 +38,68 @@ function initArrays() {
     }
 }
 
+function getNeighborCount(row, col) {
+    let count = 0;
+    let numrow=Number(row);
+    let numcol=Number(col);
+    
+        // Check if first row
+        if (numrow - 1 >= 0) {
+        // Check if top neighbour
+        if (now[numrow - 1][numcol] == 1) 
+            count++;
+    }
+        // Check if in first cell
+        // Upper left corner
+        if (numrow - 1 >= 0 && numcol - 1 >= 0) {
+        // Check upper left neighbor
+        if (now[numrow - 1][numcol - 1] == 1) 
+            count++;
+    }
+        // Make sure we are not on the first row last column
+        // Upper right corner
+        if (numrow - 1 >= 0 && numcol + 1 < cols) {
+        //Check upper right neighbor
+            if (now[numrow - 1][numcol + 1] == 1) 
+                count++;
+        }
+    // Make sure we are not on the first column
+    if (numcol - 1 >= 0) {
+        //Check left neighbor
+        if (now[numrow][numcol - 1] == 1) 
+            count++;
+    }
+    // Make sure we are not on the last column
+    if (numcol + 1 < cols) {
+        //Check right neighbor
+        if (now[numrow][numcol + 1] == 1) 
+            count++;
+    }
+    // Make sure we are not on the bottom left corner
+    if (numrow + 1 < rows && numcol - 1 >= 0) {
+        //Check bottom left neighbor
+        if (now[numrow + 1][numcol - 1] == 1) 
+            count++;
+    }
+    // Make sure we are not on the bottom right
+    if (numrow + 1 < rows && numcol + 1 < cols) {
+        //Check bottom right neighbor
+        if (now[numrow + 1][numcol + 1] == 1) 
+            count++;
+    }
+    
+    
+    // Make sure we are not on the last row
+    if (numrow + 1 < rows) {
+        //Check bottom neighbor
+        if (now[numrow + 1][numcol] == 1) 
+            count++;
+    }
+    
+    
+    return count;
+}
+
 function createWorld(){
     let world = document.querySelector('#world');
 
