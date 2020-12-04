@@ -6,7 +6,7 @@ let next =[rows];
 
 let started=false;// Set to true when use clicks start
 let timer;//To control evolutions
-let evolutionSpeed=500;// One second between generations
+let evolutionSpeed=250;// One second between generations
 
 //OnClick function
 function cellClick() {
