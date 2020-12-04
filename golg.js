@@ -105,7 +105,6 @@ function getNeighborCount(row, col) {
 }
 
 function createNext() {
-    console.log(7);
     for (row in now) {
         for (col in now[row]) {
            
@@ -122,7 +121,8 @@ function createNext() {
                 } else if (neighbors > 3) {
                     next[row][col] = 0;
                 }
-            } else if (now[row][col] == 0) {
+            } 
+            else if (now[row][col] == 0) {
                 // If Dead or Empty
             
                 if (neighbors == 3) {
@@ -131,12 +131,10 @@ function createNext() {
             }
         }
     }
-    console.log(8);
     
 }
 
 function updateNow() {
-    console.log(4);
     for (row in now) {
         for (col in now[row]) {
             // Update the current generation with
@@ -146,12 +144,10 @@ function updateNow() {
             next[row][col] = 0;
         }
     }
-    console.log(5);
  
 }
 
 function updateWorld() {
-    console.log(1);
     let cell='';
     for (row in now) {
         for (col in now[row]) {
@@ -163,15 +159,9 @@ function updateWorld() {
             }
         }
     }
-    console.log(2);
-}
-
-function checkAll(){
-
 }
 
 function updateAll(){
-    console.log(3);
     createNext();//Apply the rules
     updateNow();//Set Current values from new generation
     updateWorld();//Update the world view
