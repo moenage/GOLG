@@ -100,6 +100,74 @@ function getNeighborCount(row, col) {
     return count;
 }
 
+function createNext() {
+    console.log(7);
+    for (row in now) {
+        for (col in now[row]) {
+           
+            let neighbors = getNeighborCount(row, col);
+         
+            // Check rules
+            // If Alive
+            if (now[row][col] == 1) {
+              
+                if (neighbors < 2) {
+                    next[row][col] = 0;
+                } else if (neighbors == 2 || neighbors == 3) {
+                    next[row][col] = 1;
+                } else if (neighbors > 3) {
+                    next[row][col] = 0;
+                }
+            } else if (now[row][col] == 0) {
+                // If Dead or Empty
+            
+                if (neighbors == 3) {
+                    next[row][col] = 1;
+                }
+            }
+        }
+    }
+    console.log(8);
+    
+}
+
+function updateNow() {
+    console.log(4);
+    for (row in now) {
+        for (col in now[row]) {
+            // Update the current generation with
+            // the results of createMow function
+            now[row][col] = next[row][col];
+            // Set next back to empty
+            next[row][col] = 0;
+        }
+    }
+    console.log(5);
+ 
+}
+function updateWorld() {
+    console.log(1);
+    let cell='';
+    for (row in now) {
+        for (col in now[row]) {
+            cell = document.getElementById(row + '_' + col);
+            if (now[row][col] == 0) {
+                cell.setAttribute('class', 'dead');
+            } else {
+                cell.setAttribute('class', 'alive');
+            }
+        }
+    }
+    console.log(2);
+}
+
+function updateAll(){
+    console.log(3);
+    createNext();//Apply the rules
+    updateNow();//Set Current values from new generation
+    updateWorld();//Update the world view
+}
+
 function createWorld(){
     let world = document.querySelector('#world');
 
